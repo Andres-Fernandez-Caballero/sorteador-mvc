@@ -1,15 +1,31 @@
 package modelos;
 
 import interfaces.IModelo;
+import utils.LectorTexto;
+import utils.Sorteador;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ModeloConArchivos implements IModelo {
 
 
-    public ModeloConArchivos() {
+    private Sorteador<String> lista;
+
+    public ModeloConArchivos(){
+        this.lista = new Sorteador<>();
+    }
+
+
+    @Override
+    public void cargarSorteador(String ruta) throws IOException  {
+        LectorTexto lectorTexto = new LectorTexto(ruta);
+        lista.insertar(lectorTexto.leerLineas());
     }
 
     @Override
-    public String tomarUnNombre() {
-        return "un nombre aleatorio";
+    public String proximoSorteado() {
+        return lista.proximoSorteado();
     }
+
 }

@@ -3,6 +3,8 @@ package controlador;
 import interfaces.IModelo;
 import interfaces.IVista;
 
+import java.io.IOException;
+
 public class Controlador {
 	
 	private IModelo modelo;
@@ -16,9 +18,13 @@ public class Controlador {
 
 	public void iniciar(){
 
-		System.out.println("Iniciando programa...");
-
-		vista.mostrarSorteado(modelo.tomarUnNombre());
+        vista.mostrarMenuInicial();
+	    try{
+            modelo.cargarSorteador(vista.getRuta());
+        }catch (IOException e){
+	        vista.mostrarError(e.getMessage());
+        }
+	    vista.mostrarSorteado(vista.getRuta());
 	}
 	
 

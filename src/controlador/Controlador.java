@@ -21,6 +21,7 @@ public class Controlador {
         vista.mostrarMenuInicial();
 	    try{
             modelo.cargarSorteador(vista.getRuta());
+            vista.mostrarMenuAcciones();
         }catch (IOException e){
 	        vista.mostrarError(e.getMessage());
         }

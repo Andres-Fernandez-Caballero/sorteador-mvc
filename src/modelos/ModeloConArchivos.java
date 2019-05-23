@@ -5,20 +5,20 @@ import utils.LectorTexto;
 import utils.Sorteador;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ModeloConArchivos implements IModelo {
 
 
+
     private Sorteador<String> lista;
 
-    public ModeloConArchivos(){
+    public ModeloConArchivos() {
         this.lista = new Sorteador<>();
     }
 
 
     @Override
-    public void cargarSorteador(String ruta) throws IOException  {
+    public void cargarSorteador(String ruta) throws IOException {
         LectorTexto lectorTexto = new LectorTexto(ruta);
         lista.insertar(lectorTexto.leerLineas());
     }

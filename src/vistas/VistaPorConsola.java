@@ -31,14 +31,11 @@ public class VistaPorConsola implements IVista{
 
     @Override
     public void mostrarMenuAcciones() {
-        char opcion = ' ';
-        do{
-            System.out.println("Eliga la opcion");
-            System.out.println("[1] Sortear");
-            System.out.println("[2] Reiniciar");
-            System.out.println("[3} Salir");
-        }while (opcion != '3');
 
+        System.out.println("Eliga la opcion");
+        System.out.println("[1] Sortear");
+        System.out.println("[2] Reiniciar");
+        System.out.println("[3} Salir");
 
     }
 
@@ -51,6 +48,8 @@ public class VistaPorConsola implements IVista{
     @Override
     public void addSortearListener(ActionListener al) {
         this.actionListener = al;
+
+
 
 
 

@@ -1,7 +1,7 @@
 package controlador;
 
-import interfaces.IModelo;
-import interfaces.IVista;
+import modelos.IModelo;
+import vistas.IVista;
 
 import java.io.IOException;
 

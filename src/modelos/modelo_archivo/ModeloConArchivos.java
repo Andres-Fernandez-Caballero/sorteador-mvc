@@ -1,6 +1,6 @@
-package modelos;
+package modelos.modelo_archivo;
 
-import interfaces.IModelo;
+import modelos.IModelo;
 import utils.LectorTexto;
 import utils.Sorteador;
 

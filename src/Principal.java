@@ -1,6 +1,6 @@
 import controlador.Controlador;
-import modelos.ModeloConArchivos;
-import vistas.VistaPorConsola;
+import modelos.modelo_archivo.ModeloConArchivos;
+import vistas.vista_consola.VistaPorConsola;
 
 public class Principal {
 

@@ -1,6 +1,6 @@
-package vistas;
+package vistas.vista_consola;
 
-import interfaces.IVista;
+import vistas.IVista;
 import utils.Consola;
 
 import java.awt.event.ActionListener;

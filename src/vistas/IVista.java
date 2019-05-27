@@ -1,4 +1,4 @@
-package interfaces;
+package vistas;
 
 import java.awt.event.ActionListener;
 

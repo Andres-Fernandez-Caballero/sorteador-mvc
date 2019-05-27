@@ -6,7 +6,7 @@ public class Consola {
 	private static Scanner sc = new Scanner(System.in);
 	
 	/**
-     * Lee un caracter desde la consola
+     * Lee un caracter desde la consogit la
      * return msj El mensaje a mostrar
      */
 	public static char leerCaracter() { 

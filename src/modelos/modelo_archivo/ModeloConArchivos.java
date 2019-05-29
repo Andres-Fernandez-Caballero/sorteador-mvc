@@ -8,24 +8,24 @@ import java.io.IOException;
 
 public class ModeloConArchivos implements IModelo {
 
+    private Sorteador<String> sorteador;
 
-
-    private Sorteador<String> lista;
-
-    public ModeloConArchivos() {
-        this.lista = new Sorteador<>();
+    public ModeloConArchivos(){
+        this.sorteador = new Sorteador<>();
     }
-
-
     @Override
     public void cargarSorteador(String ruta) throws IOException {
         LectorTexto lectorTexto = new LectorTexto(ruta);
-        lista.insertar(lectorTexto.leerLineas());
+        sorteador.insertar(lectorTexto.leerLineas());
+    }
+
+    @Override
+    public void reiniciar() {
+        this.sorteador.reiniciar();
     }
 
     @Override
     public String proximoSorteado() {
-        return lista.proximoSorteado();
+        return sorteador.proximoSorteado();
     }
-
 }

@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -12,12 +13,14 @@ import java.util.Random;
 
 public class Sorteador<T> implements Iterable<T> {
 	private ArrayList<T> elementos;
+	private  ArrayList<T> candidatos;
 	
 	/**
      * Construye un nuevo sorteador de elementos.
      */
 	public Sorteador() {
-		this.elementos = new ArrayList<T>();
+		this.elementos = new ArrayList<>();
+		this.candidatos = new ArrayList<>();
 	}
 	
 	/**
@@ -37,9 +40,7 @@ public class Sorteador<T> implements Iterable<T> {
      * @param elementos Los elementos a insertar.
      */
 	public void insertar (T[] elementos) {
-		for (T t : elementos) {
-			this.elementos.add(t);
-		}
+		Collections.addAll(this.elementos, elementos);
 	}
 	
 	/**
@@ -47,7 +48,8 @@ public class Sorteador<T> implements Iterable<T> {
      * @param elementos Los elementos a insertar.
      */
 	public void insertar (ArrayList<T> elementos) {
-		this.elementos = (ArrayList<T>) elementos.clone();
+		this.candidatos.addAll(elementos);
+		this.elementos.addAll(elementos);
 	}
 	
 	/**
@@ -55,11 +57,13 @@ public class Sorteador<T> implements Iterable<T> {
      * @return un elemento de la colección de manera aleatoria.
      */
 	public T proximoSorteado() {
-		T elemento = null;
-		if ( !estaVacio() ) {
-			int a = aleatorio(this.elementos.size());
-			elemento = this.elementos.remove(a); // remove() lo devuelve antes de borrarlo
-		}
+		T elemento;
+		if ( estaVacio() ) {
+			throw new UnsupportedOperationException("No hay elementos en el sorteador");
+		}else{
+			int aleatorio = aleatorio(this.candidatos.size());
+			elemento = this.candidatos.remove(aleatorio);
+			}
 		return elemento;
 	}
 	
@@ -98,8 +102,12 @@ public class Sorteador<T> implements Iterable<T> {
 	public Iterator<T> iterator() {
 		return new IteratorSorteador();
 	}
-	
-	private class IteratorSorteador implements Iterator<T> {
+
+    public void reiniciar() {
+		this.candidatos =new ArrayList<>(this.elementos);
+    }
+
+    private class IteratorSorteador implements Iterator<T> {
 		@Override
 		public boolean hasNext() {
 			return !estaVacio();

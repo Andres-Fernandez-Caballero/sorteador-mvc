@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 public class Consola {
 	private static Scanner sc = new Scanner(System.in);
+
+	private Consola(){}
 	
 	/**
      * Lee un caracter desde la consola
      * return msj El mensaje a mostrar
      */
-	public static char leerCaracter() { 
-		char letra = sc.nextLine().charAt(0); // Lee una cadena y obtiene el primer caracter
-		return letra;
+	public static char leerCaracter(String mensaje) {
+		String cadena = leerCadena(mensaje);
+		return cadena.charAt(0);
 	}
 	
 	/**
@@ -23,9 +25,14 @@ public class Consola {
 		return entero;
 	}
 
-	public static String leerCadena() {
+	public static String leerCadena(String mensaje) {
+		String comp = mensaje.isEmpty() ? ">" : ">";
+		System.out.print(mensaje + comp);
 		String cadena = sc.nextLine();
+		while (cadena.isEmpty()){
+			System.out.print("ERROR: " + mensaje + comp);
+			cadena = sc.nextLine();
+		}
 		return cadena;
 	}
-
 }

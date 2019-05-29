@@ -5,9 +5,14 @@ import java.awt.event.ActionListener;
 public interface IVista {
 
 	void mostrarSorteado(String sorteado);
-	void mostrarError(String mensaje);
-	void mostrarMenuInicial();
-	void mostrarMenuAcciones();
+	void mostrarError(String mensajeError);
+	void mostrarInfo(String mensaje);
+	void iniciarVista();
+
+	//listeners
+	void addSortearListener(ActionListener actionListener);
+	void addReiniciarListener(ActionListener actionListener);
+	void addCargarListener(ActionListener actionListener);
+
 	String getRuta();
-	void addSortearListener(ActionListener al);
 }
